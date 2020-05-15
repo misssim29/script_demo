@@ -1,0 +1,305 @@
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding&display=swap');
+
+*{padding: 0; margin: 0; text-decoration: none; list-style: none; font-family: 'Nanum Gothic Coding', monospace;}
+
+
+.nav{position:fixed; color:#fff; font-size:18pt; font-family:'Nanum Gothic Coding', monospace; margin-top:50px; z-index:3;}
+.nav li a{color:#486666; font-family:'Nanum Gothic Coding', monospace; display: block; width:100%; height: 100%; padding:10px 0 30px 20px; border-top:1px solid #486666; text-align: right}
+
+.contents>div{width:100%; height:100vh;}
+#graph{background-color:#EFF0ED}
+#txt{background-color:#E2EAEC}
+#ani{background-color:#B5C7C4 }
+#example{background-color:#E8EAED;}
+
+.nav li a:hover{color:#fff; background: #486666}
+.nav li a.active{color:#D84C5C}
+
+
+/*---------------------------------------GRAPH-----------------------------------------------*/
+
+
+/*텍스트*/
+
+@media screen and (min-height:800px){
+    .explain{width:60vw; position:absolute; top:680px; height:10vh; left:50%; transform: translate(-50%);  line-height: 1.8; color:#486666} 
+}
+
+
+@media screen and (max-height:799px){
+    .explain{width:15vw; top:100px; right:2.5vw; position:absolute; height:50vh; line-height: 1.8; color:#486666}
+}
+
+/*그래프*/
+.display{width:60%; margin: auto; position:relative; height:100vh}
+.demo{background-color: #fff; width:100%; height: 500px; position:absolute; top:10%; box-sizing: border-box; border:1px solid #486666;}
+#graph_sel{width:40%; height: 40px; border:1px solid #D84C5C; color:#D84C5C; font-size:1.5vh; position:absolute; top:630px; text-indent:5px; box-sizing: border-box; cursor: pointer; left:0%}
+.graph_on{width:10%; height: 40px; position: absolute; top:630px; left:42%; border-radius: 5px; border:1px solid #D84C5C; background-color: #D84C5C; color:#fff; font-size:1.5vh; box-sizing: border-box; cursor: pointer;}
+
+
+/*막대그래프 - 한번에 나타나기*/
+.op1{width:70%; height: 70%; left:15%; top:15%; border-left:1px solid #444; border-bottom:1px solid #444; position:absolute; overflow: hidden; display: none; text-align: center; color:#486666}
+.op1>div{line-height:50px}
+.op1>div:nth-child(1){width:8%; height:50%; background-color:#EFF0ED; position:absolute; bottom:-100%; left:10%}
+.op1>div:nth-child(2){width:8%; height:30%; background-color:#D84C5C; position:absolute; bottom:-100%;; left:25%; color:#fff;}
+.op1>div:nth-child(3){width:8%; height:80%; background-color:#EFF0ED; position:absolute; bottom:-100%;; left:40%}
+.op1>div:nth-child(4){width:8%; height:95%; background-color:#D84C5C; position:absolute; bottom:-100%;; left:55%; color:#fff; }
+.op1>div:nth-child(5){width:8%; height:65%; background-color:#EFF0ED; position:absolute; bottom:-100%;; left:70%}
+
+/*막대그래프 - 하나씩 나타나기*/
+.op2{width:70%; height: 70%; left:15%; top:15%; border-left:1px solid #444; border-bottom:1px solid #444; position:absolute; overflow: hidden; display: none; color:#486666; text-align: center;}
+.op2>div{line-height:50px}
+.op2>div:nth-child(1){width:8%; height:50%; background-color:#EFF0ED; position:absolute; bottom:-100%; left:10%}
+.op2>div:nth-child(2){width:8%; height:30%; background-color:#D84C5C; position:absolute; bottom:-100%;; left:25%; color:#fff;}
+.op2>div:nth-child(3){width:8%; height:80%; background-color:#EFF0ED; position:absolute; bottom:-100%;; left:40%}
+.op2>div:nth-child(4){width:8%; height:95%; background-color:#D84C5C; position:absolute; bottom:-100%;; left:55%; color:#fff;}
+.op2>div:nth-child(5){width:8%; height:65%; background-color:#EFF0ED; position:absolute; bottom:-100%;; left:70%}
+
+/*막대그래프 - 한번에 닦아내기*/
+.op3{width:70%; height:70%; left:15%; top:15%; border-left:1px solid #444; border-bottom:1px solid #444; position:absolute; color:#486666; text-align: center; display: none;}
+.op3_wrap{width:100%; height:0; overflow: hidden; position:absolute; bottom:0; left:0;}
+.op3_wrap>div{line-height:70px}
+.op3_wrap>div:nth-child(1){width:8%; height:140px; background-color:#EFF0ED; position:absolute; bottom:0; left:10%}
+.op3_wrap>div:nth-child(2){width:8%; height:100px; background-color:#D84C5C; position:absolute; bottom:0; left:25%; color:#fff;}
+.op3_wrap>div:nth-child(3){width:8%; height:270px; background-color:#EFF0ED; position:absolute; bottom:0; left:40%}
+.op3_wrap>div:nth-child(4){width:8%; height:290px; background-color:#D84C5C; position:absolute; bottom:0; left:55%; color:#fff;}
+.op3_wrap>div:nth-child(5){width:8%; height:220px; background-color:#EFF0ED; position:absolute; bottom:0; left:70%}
+
+/*막대그래프 - 하나씩 닦아내기*/
+.op4{width:70%; height:70%; left:15%; top:15%; border-left:1px solid #444; border-bottom:1px solid #444; position:absolute; color:#486666; display: none;}
+.op4>div>div{text-align: center; width:100%; line-height:50px}
+.op4>div{overflow: hidden;}
+.op4_1{width:8%; height:0; background-color:#EFF0ED; position:absolute; bottom:0; left:10%}
+.op4_1>div{height:140px; position:absolute; bottom:0}
+.op4_2{width:8%; height:0; background-color:#D84C5C; position:absolute; bottom:0; left:25%; color:#fff;}
+.op4_2>div{height:100px; position:absolute; bottom:0}
+.op4_3{width:8%; height:0; background-color:#EFF0ED; position:absolute; bottom:0; left:40%}
+.op4_3>div{height:270px; position:absolute; bottom:0}
+.op4_4{width:8%; height:0; background-color:#D84C5C; position:absolute; bottom:0; left:55%; color:#fff;}
+.op4_4>div{height:290px; position:absolute; bottom:0}
+.op4_5{width:8%; height:0; background-color:#EFF0ED; position:absolute; bottom:0; left:70%}
+.op4_5>div{height:220px; position:absolute; bottom:0}
+
+/*선형그래프 - 한번에 나타나기*/
+.op5{width:70%; height:330px; left:15%; top:15%; border-left:1px solid #444; border-bottom:1px solid #444; position:absolute; color:#486666; display: none;}
+.op5_pink{width:0; overflow: hidden; position:absolute; left:0; bottom:0; z-index:3}
+.op5_gray{width:0; overflow: hidden; position:absolute; left:0; bottom:0}
+.op5>div>img{width:500px;}
+
+
+/*선형그래프 - 하나씩 나타나기*/
+.op6{width:70%; height:330px; left:15%; top:15%; border-left:1px solid #444; border-bottom:1px solid #444; position:absolute; color:#486666; display: none;}
+.op6_pink{width:0; overflow: hidden; position:absolute; left:0; bottom:0; z-index:3}
+.op6_gray{width:0; overflow: hidden; position:absolute; left:0; bottom:0}
+.op6>div>img{width:500px;}
+
+/*선형그래프 - 누워있다 나타나기*/
+.op7{width:70%; height:330px; left:15%; top:15%; border-left:1px solid #444; border-bottom:1px solid #444; position:absolute; color:#486666; display: none;}
+.op7_pink{width:100%; overflow: hidden; position:absolute; left:0; bottom:0; z-index:3; transform: rotateX(90deg); }
+.op7_gray{width:100%; overflow: hidden; position:absolute; left:0; bottom:0;  transform: rotateX(90deg);}
+.op7>div>img{width:500px;}
+
+.op7_pink.active{transform: rotate(0deg); transition:all 1s;}
+.op7_gray.active{transform: rotate(0deg); transition:all 1s;}
+
+
+/*막대그래프 - 움직이기*/
+.op8{width:70%; height: 70%; left:15%; top:15%; border-left:1px solid #444; border-bottom:1px solid #444; position:absolute; overflow: hidden; display: none; color:#486666; text-align: center;}
+.op8>div{line-height:50px}
+.op8>div:nth-child(1){width:8%; height:50%; background-color:#EFF0ED; position:absolute; bottom:-100%; left:10%}
+.op8>div:nth-child(2){width:8%; height:30%; background-color:#D84C5C; position:absolute; bottom:-100%;; left:25%; color:#fff;} 
+.op8>div:nth-child(3){width:8%; height:80%; background-color:#EFF0ED; position:absolute; bottom:-100%;; left:40%}
+.op8>div:nth-child(4){width:8%; height:95%; background-color:#D84C5C; position:absolute; bottom:-100%;; left:55%; color:#fff;}
+.op8>div:nth-child(5){width:8%; height:65%; background-color:#EFF0ED; position:absolute; bottom:-100%;; left:70%}
+
+/*선형그래프 - 매끄럽게 선그리기*/
+.op9{width:70%; height: 350px; left:15%; top:15%; border-left:1px solid #444; border-bottom:1px solid #444; position:absolute; overflow: hidden; text-align: center; color:#486666; display: none;}
+.op9 svg{float:left; display: none;}
+.op9 .line1{fill:none; stroke-width:5; stroke-linecap:round; stroke-linejoin:round; stroke-dasharray:900; stroke-dashoffset:0; -webkit-animation: op9ani 1 ease-in-out forwards 2s; stroke:#D84C5C;}
+.op9 .line2{fill:none;  stroke-linecap:round; stroke-linejoin:round; stroke-dasharray:900; stroke-dashoffset:0; -webkit-animation: op9ani2 1 ease-in-out forwards 3s;  animation-delay: 2s;}
+
+@keyframes op9ani{
+    0%{
+        stroke-dashoffset : 900;
+    }
+    100%{
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes op9ani2{
+    0%{stroke:#486666;
+        stroke-width:5;
+        stroke-dashoffset : 900;
+    }
+    100%{
+        stroke:#486666;
+        stroke-width:5;
+        stroke-dashoffset: 0;
+    }
+}
+
+
+/*선형그래프 - 강조 선그리기*/
+.op10{width:70%; height: 350px; left:15%; top:15%; border-left:1px solid #444; border-bottom:1px solid #444; position:absolute; overflow: hidden; text-align: center; color:#486666; display: none;}
+.op10 svg{float:left; display: none;}
+.op10 polyline{-webkit-animation: op10ani 1 ease-in-out forwards 5s; stroke-width:5; stroke-linecap:round; stroke-linejoin:round; fill:none; stroke:#D84C5C; stroke-dasharray:900; stroke-dashoffset:0;}
+
+@keyframes op10ani{
+    0%{
+        stroke-dashoffset : 900; 
+        
+    }
+    10%,20%{
+        stroke-dashoffset : 740; 
+    }
+    
+    30%,40%{
+        stroke-dashoffset : 555;
+    }
+    
+    50%,60%{
+        stroke-dashoffset : 450;
+    }
+    
+    70%,80%{
+        stroke-dashoffset : 335;
+    }
+    
+    100%{
+        stroke-dashoffset: 0;
+    }
+}
+
+/*선형그래프 - 움직이기*/
+.op11{width:70%; height: 350px; left:15%; top:15%; border-left:1px solid #444; border-bottom:1px solid #444; position:absolute; overflow: hidden; text-align: center; color:#486666; display: none;}
+.op11 svg{float:left; display: none;}
+.op11 .line1{stroke-width:5; stroke-linecap:round; stroke-linejoin:round; fill:none; stroke:#D84C5C;}
+.op11 .line2{stroke-width:5; stroke-linecap:round; stroke-linejoin:round; fill:none; stroke:#486666;}
+.op11 .line3{stroke-width:5; stroke-linecap:round; stroke-linejoin:round; fill:none; stroke:#EFF0ED;}
+
+
+
+/*도넛그래프 - 기본형*/
+
+.op12{display: none;}
+.op12 svg{position: absolute; top:100px; left:50%; transform: translate(-50%)}
+.nut5{
+            animation: nuts_chart 3s reverse;
+            transform: rotate(-90deg);
+            transform-origin: center;
+        }
+
+
+/*도넛그래프 - 퍼센트와 나타나기*/
+
+.op13{display: none;}
+.op13 .svg1{position:absolute; top:130px; left:20%;}
+.op13 .svg2{position: absolute; top:130px; left:55%;}
+.op13 .nut1{
+animation: nuts_chart 2s reverse ease-in;
+transform: rotate(-90deg);
+transform-origin: center;
+}
+
+@keyframes nuts_chart{
+to { stroke-dasharray:0 100;}
+        }
+.op13 #cent{
+transform: scale();
+animation: scaled 2s reverse ease-in;
+transform-origin: center;
+opacity: 1;
+}
+@keyframes scaled{
+to {transform: scale(0); opacity:0}
+}
+.op13 .count{position:absolute; font-size:25pt; color:#444; left:50%; top:50%; transform: translate(-50%,-50%)}
+.op13 .count_wrap{position:absolute; width:220px; height:220px; top:125px; left:55%}
+.op13 .nut2{
+            animation: nuts_chart 3s reverse ease-out;
+            transform: rotate(-90deg);
+            transform-origin: center;
+        }
+
+/*도넛그래프 - 분할과 강조*/
+
+.op14{display: none;}
+.op14 svg{position:absolute; left:50%; transform: translate(-50%)}
+.op14 .nut{transform: rotate(-90deg); transform-origin: center; stroke:#B5C7C4; opacity: 0;}
+.op14 .nut.on{animation: op14nut 2s reverse ease-in-out; opacity: 1}
+.op14 .nut2{transform: rotate(24deg); transform-origin: center; stroke:#809793; stroke-width:10; opacity: 0;}
+.op14 .nut2.on{animation: op14nut 1s reverse ease-in-out; opacity: 1; stroke-dasharray:10,100;}
+.op14 .nut3{transform: rotate(60deg); transform-origin: center; stroke:#486666; stroke-width:10; opacity: 0;}
+.op14 .nut3.on{animation: op14nut 2s reverse ease-in-out; opacity: 1; stroke-dasharray:50,100; }
+.op14 .nut4{stroke:#D84C5C; stroke-width:10; transform-origin: center; transform: rotate(251deg); stroke-dasharray:5,100; display: none;}
+        
+         @keyframes op14nut {
+            to { stroke-dasharray:0 100;}
+        }
+        
+        
+        .op14 .bigger.active{animation:bigger14 2s ease-in-out; transform-origin: center;}
+        .op14 .bigger.freeze{transform:scale(1.5)}
+        
+        @keyframes bigger14{
+            from{transform: scale(1)}
+            to{transform: scale(1.5)}
+        }
+
+
+
+
+
+/*-----------------------------------------TEXT--------------------------------------------*/
+
+
+/*텍스트*/
+
+
+.txt_page{position:relative;}
+
+@media screen and (min-height:800px){
+    .explain2{width:60vw; position:absolute; top:680px; height:10vh; left:50%; transform: translate(-50%);  line-height: 1.8; color:#486666} 
+}
+
+
+@media screen and (max-height:799px){
+    .explain2{width:15vw; top:100px; right:2.5vw; position:absolute; height:50vh; line-height: 1.8; color:#486666}
+}
+
+/*선택*/
+#txt_sel{width:24vw; height: 40px; border:1px solid #486666; color:#486666; font-size:1.5vh; position:absolute; top:630px; text-indent:5px; box-sizing: border-box; cursor: pointer; left:20vw}
+.txt_on{width:6vw; height: 40px; position: absolute; top:630px; left:45vw; border-radius: 5px; border:1px solid #486666; background-color: #486666; color:#fff; font-size:1.5vh; box-sizing: border-box; cursor: pointer;}
+
+.demo2{position: absolute; width:60vw; height:500px; top:100px; left:50%; transform: translate(-50%)}
+
+/*텍스트 - 나타나기*/
+.txt_js1{color:#486666; font-size:50px; top:200px; left:50%; transform: translate(-50%); position:absolute; display: none;}
+
+/*텍스트 - 아래에서 위로*/
+.txt_js2{color:#486666; font-size:50px; top:200px; left:50%; transform: translate(-50%); position:absolute; display: none;}
+.txt_js2 p{display: block; margin-top:50px; opacity: 0;}
+
+/*텍스트 - 가로로 색변화*/
+.txt_js3{font-size:50px; top:200px; left:50%; transform: translate(-50%); position:relative; display: none;}
+.txt_js3 > div{display: block; position:absolute; top:0; left:0; word-wrap: normal}
+.txt_js3_bg{color:#B5C7C4}
+.txt_js3_p{color:#D84C5C; overflow: hidden; width:0;}
+.txt_js3 div p{word-wrap: normal; overflow: hidden; white-space: nowrap}
+
+/*텍스트 - 글자 변화*/
+.txt_js4{color:#486666; font-size:50px; top:200px; position:absolute; width:100%}
+.txt_js4 p{position:absolute; text-align: center; width:100%; white-space: nowrap; display: none;}
+.txt_js4_6{left:-50vw; opacity:0;}
+.txt_js4_7{left:-50vw; opacity:0;}
+.txt_js4_8{left:-50vw; opacity:0;}
+
+
+
+
+
+
+/*
+색상표
+#EFF0ED #D84C5C #486666 #B5C7C4 #E2EAEC #E8EAED #809793*/
